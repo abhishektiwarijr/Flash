@@ -1,0 +1,4 @@
+package inheritance
+
+interface Organism {
+}
