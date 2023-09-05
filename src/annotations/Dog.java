@@ -8,4 +8,12 @@ public class Dog {
     public void woof() {
         System.out.println("Woof..!");
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

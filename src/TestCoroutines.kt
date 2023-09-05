@@ -1,11 +1,14 @@
 import kotlinx.coroutines.*
+import java.lang.IllegalArgumentException
 import kotlin.concurrent.thread
+import kotlin.coroutines.CoroutineContext
 
 fun main() {
 //    coroutineJob()
 //    coroutineSupervisorJob()
 //    coroutineHuge()
 //    threadHuge()
+    coroutineSupervisorJob()
 }
 
 fun coroutineJob() = runBlocking {
