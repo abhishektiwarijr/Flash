@@ -1,4 +1,7 @@
-public class SingletonClassPerfect {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class SingletonClassPerfect implements Serializable {
     private static volatile SingletonClassPerfect sSoleInstance;
 
     //private constructor.
@@ -20,8 +23,12 @@ public class SingletonClassPerfect {
     }
 
     //Make singleton from serialize and deserialize operation.
-    protected SingletonClassPerfect readResolve() {
+//    protected SingletonClassPerfect readResolve() {
+//        return getInstance();
+//    }
+
+    @Serial
+    protected Object readResolve() {
         return getInstance();
     }
-
 }

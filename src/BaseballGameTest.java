@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGameTest {
+
     public static int calPoints(String[] ops) {
         int result = Integer.MIN_VALUE;
         List<String> record = new ArrayList<>();

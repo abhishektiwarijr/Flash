@@ -20,10 +20,10 @@ public class ValidParentheses {
         Deque<Character> stack = new ArrayDeque<Character>();
 
         for (int i = 0; i < expr.length(); i++) {
-            char x = expr.charAt(i);
+            char currChar = expr.charAt(i);
 
-            if (x == '(' || x == '[' || x == '{') {
-                stack.push(x);
+            if (currChar == '(' || currChar == '[' || currChar == '{') {
+                stack.push(currChar);
                 continue;
             }
 
@@ -31,7 +31,7 @@ public class ValidParentheses {
                 return false;
 
             char check;
-            switch (x) {
+            switch (currChar) {
                 case ')':
                     check = stack.pop();
                     if (check == '{' || check == '[')

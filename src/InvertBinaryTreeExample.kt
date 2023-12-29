@@ -34,11 +34,11 @@ fun invertTreeRecursive(rootNode: TreeNode?) {
     invertTreeRecursive(rootNode.rightChild)
 }
 
-fun invertTreeIterative(rootNode: TreeNode?) {
+fun invertTreeIterative(root: TreeNode?) {
     val queue = LinkedList<TreeNode>()
 
-    if (rootNode != null) {
-        queue.add(rootNode)
+    if (root != null) {
+        queue.add(root)
     }
 
     while (queue.isNotEmpty()) {
