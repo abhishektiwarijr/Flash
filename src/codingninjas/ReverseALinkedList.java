@@ -9,7 +9,7 @@ public class ReverseALinkedList {
         printLinkedList(head);
 
         //Reverse the LinkedList
-        LLNode reversedHead = reverseLinkedList(head);
+        LLNode reversedHead = reverseRec(head);
 
         //Print after reversing
         printLinkedList(reversedHead);
@@ -18,10 +18,9 @@ public class ReverseALinkedList {
     private static LLNode reverseLinkedList(LLNode head) {
         LLNode prev = null;
         LLNode curr = head;
-        LLNode next;
 
         while (curr != null) {
-            next = curr.next; //Put current's next in next
+            LLNode next = curr.next; //Put current's next in next
             curr.next = prev; //Make current's next to previous
             prev = curr; //Shift previous to current
             curr = next; //And shift current to next
@@ -37,6 +36,22 @@ public class ReverseALinkedList {
             start = start.next;
         }
         System.out.println();
+    }
+
+    /**
+     * The idea is to reach the last node of the linked list using recursion
+     * then start reversing the linked list.
+     * @param head {head of the list}
+     * @return LLNode
+     */
+    private static LLNode reverseRec(LLNode head) {
+        if(head == null || head.next == null) return head;
+
+        LLNode h2 = reverseRec(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return h2;
     }
 }
 
