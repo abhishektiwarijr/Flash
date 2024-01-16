@@ -8,6 +8,19 @@ fun main() {
     )
 }
 
-fun `Kadene's algorithm - Largest Sum Contiguous Subarray (Kadane's Algorithm)`(nums: IntArray) {
+fun `Kadene's algorithm - Largest Sum Contiguous Subarray (Kadane's Algorithm)`(nums: IntArray) : Int {
+    var maxSum = 0
+    var currSumSoFar = 0
+    for (i in 0..nums.lastIndex) {
+        currSumSoFar += nums[i]
 
+        if(currSumSoFar > maxSum) {
+            maxSum = currSumSoFar
+        }
+
+        if(currSumSoFar < 0) {
+            currSumSoFar = 0
+        }
+    }
+    return maxSum
 }
