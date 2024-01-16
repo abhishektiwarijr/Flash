@@ -92,9 +92,9 @@ fun convertNumberToWords(num : Long) : String {
     return result.toString().trim()
 }
 
-val units = arrayOf("", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")
+val units = arrayOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")
 val teens = arrayOf("Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen")
-val tens = arrayOf("", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety")
+val tens = arrayOf("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety")
 
 fun convertToWordsLessThanThousands(number : Long) : String {
     val hundred = number / 100
@@ -103,18 +103,18 @@ fun convertToWordsLessThanThousands(number : Long) : String {
     val result = StringBuilder()
 
     if(hundred > 0) {
-        result.append("${units[hundred.toInt()]} Hundred ")
+        result.append("${units[(hundred-1).toInt()]} Hundred ")
     }
 
     if (remainder in 10..19) {
         result.append(teens[(remainder - 10).toInt()])
     } else {
         if (remainder >= 20) {
-            result.append("${tens[(remainder / 10).toInt()]} ")
+            result.append("${tens[(remainder / 10 - 2).toInt()]} ")
         }
 
         if (remainder % 10 > 0) {
-            result.append(units[(remainder % 10).toInt()])
+            result.append(units[(remainder % 10 - 1).toInt()])
         }
     }
 
