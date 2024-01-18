@@ -5,6 +5,7 @@ const val TRILLION = 1_000_000_000_000
 const val BILLION = 1_000_000_000
 const val MILLION = 1_000_000
 const val THOUSAND = 1_000
+
 fun main() {
     println(convertNumberToWords(0))
     println(convertNumberToWords(1))
@@ -46,14 +47,14 @@ fun main() {
     println(convertNumberToWords(1_321_123_123_123_123L))
 }
 
-fun convertNumberToWords(num : Long) : String {
+fun convertNumberToWords(num: Long): String {
     var number = num
-    if(number == 0L) return "Zero"
+    if (number == 0L) return "Zero"
 
     val result = StringBuilder()
 
     //In case of negative number
-    if(number < 0) {
+    if (number < 0) {
         result.append("Minus ")
         number = number.absoluteValue
     }
@@ -65,27 +66,27 @@ fun convertNumberToWords(num : Long) : String {
     val thousand = (number % MILLION) / THOUSAND
     val remainder = number % THOUSAND
 
-    if(quadrillion > 0) {
+    if (quadrillion > 0) {
         result.append("${convertToWordsLessThanThousands(quadrillion)} Quadrillion ")
     }
 
-    if(trillion > 0) {
+    if (trillion > 0) {
         result.append("${convertToWordsLessThanThousands(trillion)} Trillion ")
     }
 
-    if(billion > 0) {
+    if (billion > 0) {
         result.append("${convertToWordsLessThanThousands(billion)} Billion ")
     }
 
-    if(million > 0) {
+    if (million > 0) {
         result.append("${convertToWordsLessThanThousands(million)} Million ")
     }
 
-    if(thousand > 0) {
+    if (thousand > 0) {
         result.append("${convertToWordsLessThanThousands(thousand)} Thousand ")
     }
 
-    if(remainder > 0) {
+    if (remainder > 0) {
         result.append(convertToWordsLessThanThousands(remainder))
     }
 
@@ -93,17 +94,28 @@ fun convertNumberToWords(num : Long) : String {
 }
 
 val units = arrayOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")
-val teens = arrayOf("Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen")
+val teens = arrayOf(
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen"
+)
 val tens = arrayOf("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety")
 
-fun convertToWordsLessThanThousands(number : Long) : String {
+fun convertToWordsLessThanThousands(number: Long): String {
     val hundred = number / 100
     val remainder = number % 100
 
     val result = StringBuilder()
 
-    if(hundred > 0) {
-        result.append("${units[(hundred-1).toInt()]} Hundred ")
+    if (hundred > 0) {
+        result.append("${units[(hundred - 1).toInt()]} Hundred ")
     }
 
     if (remainder in 10..19) {
