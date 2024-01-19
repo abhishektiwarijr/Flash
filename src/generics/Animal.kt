@@ -1,6 +1,8 @@
 package generics
 
-open class Animal {
+import java.io.Serializable
+
+open class Animal : Serializable {
     open fun makeNoise() {
         println("make noise..!")
     }
