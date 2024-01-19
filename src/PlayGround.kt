@@ -7,8 +7,8 @@ fun main() {
 
 fun validParenthesis(expr: String): Boolean {
     val stack = ArrayDeque<Char>()
-    val openingBrackets = setOf<Char>('(', '{', '[')
-    val closingBracketsMap = mapOf<Char, Char>(
+
+    val closingBracketsMap = hashMapOf<Char, Char>(
         ')' to '(',
         '}' to '{',
         ']' to '['
@@ -16,7 +16,7 @@ fun validParenthesis(expr: String): Boolean {
 
     for (ch in expr) {
         when (ch) {
-            in openingBrackets -> stack.push(ch)
+            in closingBracketsMap.values -> stack.push(ch)
             in closingBracketsMap.keys -> {
                 if(stack.isEmpty() || stack.pop() != closingBracketsMap[ch]) {
                     return false
