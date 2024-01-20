@@ -1,7 +1,32 @@
 package leetcode
 
 fun main() {
-    println(generatePermutations("cat").toString())
+//    println(generatePermutations("cat").toString())
+//    permute("abc", 0, 2)
+    val s1 = "ab"
+    val s2 = "eidbaooo"
+    println(checkInclusion(s1, s2))
+}
+
+fun permute(s : String, l : Int, r : Int) {
+    if(l == r) {
+        println(s)
+    } else {
+        var str = s
+        for(i in l..r) {
+            str = swap(str, l, i)
+            permute(str, l+1, r)
+            str = swap(str, l, i)
+        }
+    }
+}
+
+fun swap(str: String, l : Int, r : Int) : String {
+    val charArr = str.toCharArray()
+    charArr[l] = charArr[r].also {
+        charArr[r] = charArr[l]
+    }
+    return String(charArr)
 }
 
 private fun generatePermutations(input : String) : List<String> {
@@ -20,4 +45,43 @@ private fun generatePermutations(input : String) : List<String> {
     }
 
     return result
+}
+
+
+private fun checkInclusion(s1 : String, s2 : String) : Boolean {
+    if(s1.length > s2.length) return false
+
+    val s1Count = IntArray(26) { 0 }
+    val s2Count = IntArray(26) { 0 }
+
+    for (i in s1.indices) {
+        s1Count[s1[i] - 'a'] = s1Count[s1[i] - 'a'] + 1
+        s2Count[s2[i] - 'a'] = s2Count[s2[i] - 'a'] + 1
+    }
+
+    var left = 0
+    var right = s1.length
+
+    while (right < s2.length) {
+        if(matches(s1Count, s2Count)) {
+            return true
+        }
+
+        s2Count[s2[right] - 'a']++
+        s2Count[s2[left] - 'a']--
+
+        left++
+        right++
+    }
+
+    return matches(s1Count, s2Count)
+}
+
+private fun matches(s1Count : IntArray, s2Count : IntArray) : Boolean {
+    for (i in s1Count.indices) {
+        if(s1Count[i] != s2Count[i]) {
+            return false
+        }
+    }
+    return true
 }

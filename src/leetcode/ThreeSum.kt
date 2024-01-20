@@ -4,7 +4,7 @@ import java.util.*
 
 fun main() {
 //    Output: [[-1,-1,2],[-1,0,1]]
-    println(threeSum(intArrayOf(-1, 0, 1, 2, -1, -4), 0))
+    println(threeSumNew(intArrayOf(-1, 0, 1, 2, -1, -4), 0))
 }
 
 fun threeSum(arr: IntArray, target: Int): List<List<Int>> {
@@ -33,3 +33,38 @@ fun threeSum(arr: IntArray, target: Int): List<List<Int>> {
     return result
 }
 
+
+fun threeSumNew(arr: IntArray, target: Int): List<List<Int>> {
+    //Bound check
+    if (arr.size < 3) return emptyList()
+
+    //Sort
+    arr.sort()
+
+    val result = HashSet<List<Int>>()
+
+    //Now pick one
+    for (i in 0 until arr.lastIndex) {
+        val first = arr[i]
+
+        //Find other two using 2Sum
+        var left = i + 1
+        var right = arr.lastIndex
+
+        while (left < right) {
+            val sum = first + arr[left] + arr[right]
+            if (sum == target) {
+                //Add the triplets in the result array
+                result.add(listOf(first, arr[left], arr[right]))
+                left++
+                right--
+            } else if (sum > target) {
+                right--
+            } else {
+                left++
+            }
+        }
+    }
+
+    return ArrayList(result)
+}
