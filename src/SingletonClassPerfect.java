@@ -22,6 +22,16 @@ public class SingletonClassPerfect implements Serializable {
         return sSoleInstance;
     }
 
+
+    public static SingletonClassPerfect getNewInstance() {
+        if(sSoleInstance == null) {
+            synchronized (SingletonClassPerfect.class) {
+                if(sSoleInstance == null) sSoleInstance = new SingletonClassPerfect();
+            }
+        }
+        return sSoleInstance;
+    }
+
     //Make singleton from serialize and deserialize operation.
 //    protected SingletonClassPerfect readResolve() {
 //        return getInstance();
