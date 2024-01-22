@@ -9,7 +9,7 @@ public class RaceConditionScenario {
 
     public static void main(String[] args) {
         Runnable incrementTask = () -> {
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 100000; i++) {
                 //Race condition can occur here
 //                synchronized (lock) {
                     sharedCounter++;

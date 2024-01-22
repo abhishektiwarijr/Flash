@@ -1,9 +1,12 @@
+import kotlinx.coroutines.runBlocking
+
 /**
  * The :: operator in Kotlin is used for
  * 1. function references,
  * 2. property references and
  * 3. constructor references
  */
+
 fun main() {
     testFunctionReference()
     testConstructorReference()
