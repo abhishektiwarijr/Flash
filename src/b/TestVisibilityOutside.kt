@@ -1,6 +1,6 @@
 package b
 
-import a.Employee
+import accessmodifiers.Employee
 
 class TestVisibilityOutside(
     name: String, email: String, salary: String, id: String
@@ -19,7 +19,6 @@ fun main() {
         "Obs_11"
     )
 
-    println(e.name)
     println(e.name)
     println(e.id)
 }

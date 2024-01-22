@@ -1,4 +1,4 @@
-package a
+package accessmodifiers
 
 open class Employee(name: String, email: String, salary: String, id: String) {
     public var name : String? = null

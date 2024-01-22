@@ -1,4 +1,4 @@
-package a;
+package accessmodifiers;
 
 public class TestAccess {
     public static void main(String[] args) {

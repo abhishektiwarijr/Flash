@@ -1,6 +1,6 @@
 package b;
 
-import a.Student;
+import accessmodifiers.Student;
 
 public class TestAccessOutside extends Student {
     public TestAccessOutside(String name, String email, String rollNumber, String grade) {

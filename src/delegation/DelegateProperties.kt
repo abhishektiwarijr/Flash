@@ -5,9 +5,9 @@ import kotlin.properties.Delegates
 fun main() {
 
     //Observable Delegate Test
-//    val observableDelegateUseCase = ObservableUseCases()
-//    observableDelegateUseCase.points = 12
-//    observableDelegateUseCase.points = 20
+    val observableDelegateUseCase = ObservableUseCases()
+    observableDelegateUseCase.points = 12
+    observableDelegateUseCase.points = 20
 
     //Vetoable Delegation Test
     val vetoableDelegationUseCase = VetoableUseCases()
