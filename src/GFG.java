@@ -33,7 +33,7 @@ public class GFG {
     }
  
     // Driver code
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         int n = 2, k = 105;
         System.out.print("Minimum number of "
