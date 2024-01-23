@@ -7,7 +7,7 @@ fun main() {
 //    println("Hi")
 
 //    executeWithCrossinline {
-//        return
+//
 //    }
 //    println("There")
 
@@ -19,6 +19,13 @@ fun main() {
     println("Hi..!")
 }
 
+inline fun add(n1: Int, n2: Int, onResult: (Int) -> Unit) {
+    println("Adding Values")
+    onResult(n1 + n2)
+    println("Adding Completed")
+//    onFailure()
+}
+
 inline fun executeWithLogging(log: () -> Unit) {
     println("Start")
     log() // The lambda passed to 'log' is inlined here
@@ -26,13 +33,13 @@ inline fun executeWithLogging(log: () -> Unit) {
 }
 
 
-inline fun executeWithCrossinline(crossinline block: () -> Unit) {
-    // You cannot use 'return' here in 'block'
-    println("Before")
-    block()
-    println("After")
-}
-
+//inline fun executeWithCrossinline(crossinline block: () -> Unit) {
+//    // You cannot use 'return' here in 'block'
+//    println("Before")
+//    block()
+//    println("After")
+//}
+//
 inline fun processLambdas(inlineLambda: () -> Unit, noinline noInlineLambda: () -> Unit) {
     // 'inlineLambda' is inlined here
     // 'noInlineLambda' is not inlined
