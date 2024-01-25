@@ -1,5 +1,7 @@
 package leetcode
 
+import buildSequence
+
 fun main() {
 //    println(fibMemoized(n = 4))
     println(fibonacci(n = 4))

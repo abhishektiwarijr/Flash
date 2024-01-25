@@ -1,13 +1,21 @@
 package coroutines
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlin.coroutines.Continuation
 
 fun main() = runBlocking {
-    doWorld()
-    println("Done")
+//    doWorld()
+//    println("Done")
+
+    val jobs = List(100_000) {
+        launch {
+            delay(1000L)
+            println(".")
+        }
+    }
+    jobs.forEach {job->
+        job.join()
+    }
 }
 
 // Concurrently executes both sections
