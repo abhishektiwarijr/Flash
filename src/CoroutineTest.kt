@@ -1,5 +1,4 @@
 import kotlinx.coroutines.*
-import java.lang.IllegalArgumentException
 
 fun main() = runBlocking {
 //    val exceptionHandler = CoroutineExceptionHandler {cc, exception ->
@@ -28,17 +27,17 @@ fun main() = runBlocking {
     normalJobExample()
 }
 
-suspend fun doTask1() : Int {
+suspend fun doTask1(): Int {
     delay(1000L)
     throw Exception("task 1 is failed")
 }
 
-suspend fun doTask2() : Int {
+suspend fun doTask2(): Int {
     delay(1500L)
     return 47
 }
 
-suspend fun doWork(num : Int) {
+suspend fun doWork(num: Int) {
     delay(2000L)
     println("$num Work Done")
 }
@@ -75,22 +74,32 @@ suspend fun cpuIntensiveExample() = coroutineScope {
     }
 }
 
-fun normalJobExample() = runBlocking {
-    val job = launch {
-        val job1 = launch { fetchDataFromNetwork("url1") }
-        val job2 = launch { fetchDataFromNetwork("url2") }
-        val job3 = launch { fetchDataFromNetwork("url3") }
+suspend fun normalJobExample() {
+    val job = Job()
+    val coroutineScope = CoroutineScope(Dispatchers.IO + job)
 
-        joinAll(job1, job2, job3)
-    }
-    delay(500L)
-    println("Cancelling the job!")
-    job.cancelAndJoin()
+    val job1 = coroutineScope.launch { fetchDataFromNetwork("url1") }
+    val job2 = coroutineScope.launch { fetchDataFromNetwork("url2") }
+    val job3 = coroutineScope.launch { fetchDataFromNetwork("url3") }
+    val job4 = coroutineScope.launch { fetchDataFromNetwork("url4") }
+    val job5 = coroutineScope.launch { fetchDataFromNetwork("url5") }
+    val job6 = coroutineScope.launch { fetchDataFromNetwork("url6") }
+    val job7 = coroutineScope.launch { fetchDataFromNetwork("url7") }
+    val job8 = coroutineScope.launch { fetchDataFromNetwork("url8") }
+
+    job.join()
+
+//        joinAll(job1, job2, job3)
+
+//    delay(500L)
+//    println("Cancelling the job!")
+//    job.cancelAndJoin()
 }
 
 suspend fun fetchDataFromNetwork(url: String) {
-    delay(1000L)
-    println("Fetched data from $url")
+    println("Before Delay ${Thread.currentThread().name} $url")
+    delay(3000L)
+    println("After Delay ${Thread.currentThread().name} $url")
 }
 
 fun supervisorJobExample() = runBlocking {
