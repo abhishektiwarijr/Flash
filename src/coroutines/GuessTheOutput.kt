@@ -1,13 +1,10 @@
 package coroutines
 
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main() {
-//    coroutineDilemma1()
-    coroutineDilemma2()
+    coroutineDilemma1()
+//    coroutineDilemma2()
 }
 
 fun coroutineDilemma1(): Unit = runBlocking {
@@ -24,7 +21,7 @@ fun coroutineDilemma1(): Unit = runBlocking {
     }
 
     launch {
-        delay(2000)
+        delay(1000)
     }
 
     //Solution

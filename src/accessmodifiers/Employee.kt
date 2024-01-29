@@ -12,4 +12,10 @@ open class Employee(name: String, email: String, salary: String, id: String) {
         this.salary = salary
         this.id = id
     }
+
+
+    operator fun component1() = name
+    operator fun component2() = email
+    operator fun component3() = salary
+    operator fun component4() = id
 }

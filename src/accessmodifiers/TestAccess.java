@@ -10,5 +10,6 @@ public class TestAccess {
         );
         System.out.println(s.name);
         System.out.println(s.rollNumber);
+        System.out.println(s.grade);
     }
 }

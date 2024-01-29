@@ -1,6 +1,9 @@
 package test
 
 fun main() {
+    val multiplier = createMultiplier()
+    multiplier(1, 3)
+
     val add = createAdder()
     val result = add(2, 3)
     myFun("", "") { org, portal ->
@@ -16,7 +19,7 @@ fun myFunTakingParameter(block: () -> Unit) {
     block()
 }
 
-private val onItemClick : (pos: Int) -> Unit = {
+private val onItemClick: (pos: Int) -> Unit = {
 
 }
 
@@ -44,4 +47,8 @@ fun createAdder(): (Int, Int) -> Int {
 
 fun myFun(org: String, portal: String, fn: (String, String) -> String): String {
     return fn(org, portal)
+}
+
+fun createMultiplier() : (Int, Int) -> Int {
+    return { a, b -> a * b }
 }

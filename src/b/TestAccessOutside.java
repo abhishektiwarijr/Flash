@@ -16,5 +16,6 @@ public class TestAccessOutside extends Student {
         );
         System.out.println(s.name);
         System.out.println(s.grade);
+//        System.out.println(s.rollNumber);
     }
 }
