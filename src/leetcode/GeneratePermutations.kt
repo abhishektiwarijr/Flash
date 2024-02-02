@@ -1,11 +1,32 @@
 package leetcode
 
 fun main() {
-//    println(generatePermutations("cat").toString())
+//    println(generatePermutations("abc").toString())
 //    permute("abc", 0, 2)
-    val s1 = "ab"
-    val s2 = "eidbaooo"
-    println(checkInclusion(s1, s2))
+//    val s1 = "ab"
+//    val s2 = "eidbaooo"
+//    println(checkInclusion(s1, s2))
+    findPerm("abc").forEach {
+        println(it)
+    }
+}
+
+fun findPerm(str : String) : List<String> {
+    if(str.length == 1) return listOf(str)
+
+    val all = mutableListOf<String>()
+
+    for (i in 0..str.lastIndex) {
+        val currentLetter = str[i]
+        val remainingLetters = str.slice(0 until i) + str.substring(i + 1)
+        val permsOfRemainingLetters = findPerm(remainingLetters)
+
+        permsOfRemainingLetters.forEach {
+            all.add(currentLetter + it)
+        }
+    }
+
+    return all
 }
 
 fun permute(s : String, l : Int, r : Int) {

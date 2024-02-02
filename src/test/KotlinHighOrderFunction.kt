@@ -1,6 +1,11 @@
 package test
 
 fun main() {
+    var a = 1
+    var b = 2
+    val c = (a < b) `?` b `|` a
+
+
     val multiplier = createMultiplier()
     multiplier(1, 3)
 
@@ -14,6 +19,22 @@ fun main() {
     }
     println(result)
 }
+
+infix fun<T> T.`|`(other : T) = other
+
+infix fun<T> Boolean.`?`(other: T) = if (this) {
+    other
+} else {
+
+}
+
+
+infix fun <T> T.choose(other : T) = if(this is Boolean) {
+    if (this) this else other
+} else {
+    throw IllegalArgumentException("choose can only be used with booleans")
+}
+
 
 fun myFunTakingParameter(block: () -> Unit) {
     block()

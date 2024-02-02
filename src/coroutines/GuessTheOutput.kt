@@ -2,8 +2,39 @@ package coroutines
 
 import kotlinx.coroutines.*
 
-fun main() {
-    coroutineDilemma1()
+interface EnumInterface {
+    fun onClick()
+}
+
+enum class GuessTheOutput : EnumInterface {
+    ONE {
+        override fun onClick() {
+
+        }
+    },
+    TWO {
+        override fun onClick() {
+
+        }
+    },
+    THREE {
+        override fun onClick() {
+
+        }
+    }
+}
+
+fun main() : Unit = runBlocking {
+    val job = launch {
+        println("Default: ${Thread.currentThread().name}")
+        delay(1000)
+        println("Will I be printed?")
+    }
+    job.join()
+    launch {
+        println("I am called")
+    }
+//    coroutineDilemma1()
 //    coroutineDilemma2()
 }
 
