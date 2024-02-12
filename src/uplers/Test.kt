@@ -1,5 +1,7 @@
 package uplers
 
+import kotlin.system.measureTimeMillis
+
 interface Repository<T> {
     fun get(): Iterable<T>
 }
@@ -25,12 +27,16 @@ fun main() {
             )
         ),
     )
-    println(getPaidCoursesWithTheNumbersOfSubscribedStudents(3, input))
+    val timeTaken = measureTimeMillis {
+        println(getPaidCoursesWithTheNumbersOfSubscribedStudents(3, input))
+    }
+    println(timeTaken.toString())
 }
 
 fun getPaidCoursesWithTheNumbersOfSubscribedStudents(coursesCount: Int, input: List<Student>): Map<Course, Int> {
     //TODO make a efficient solution for this
-    return input.flatMap { it.subscribedCourses }
+    return input
+        .flatMap { it.subscribedCourses }
         .filter { it.isPaid }
         .groupBy({ it.name }, { it })
         .map { (_, values) -> values[0] to values.size }
