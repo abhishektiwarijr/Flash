@@ -2,7 +2,7 @@ data class Person(var name: String?=null)
 
 fun main() {
     //https://www.howtodoandroid.com/kotlin-scope-functions/
-//    val person = Person("John Doe")
+    val person = Person("John Doe")
 //
 //    val also = person.also {
 //
@@ -10,9 +10,9 @@ fun main() {
 //    val apply = person.apply {
 //
 //    }
-//    val with = with(person) {
-//        return@with "HelloWith"
-//    }
+    val with = with(person) {
+        return@with "HelloWith"
+    }
 //    val let = person.let {
 //        return@let "HelloLet"
 //    }
@@ -22,7 +22,7 @@ fun main() {
 //
 //    println(also)
 //    println(apply)
-//    println(with)
+    println(with)
 //    println(let)
 //    println(run)
     testScopeFunction()
@@ -69,6 +69,14 @@ private fun testScopeFunction() {
         it.name = "New Game"
     }
     println(also)
+
+//    val numbers = mutableListOf("one", "two", "three")
+//    val countEndsWithE = numbers.run {
+//        add("four")
+//        add("five")
+//        count { it.endsWith("e") }
+//    }
+//    println("There are $countEndsWithE elements that end with e.")
 }
 
 //inline fun <T> T.also(block: (T) -> Unit): T {

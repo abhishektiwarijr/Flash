@@ -1,7 +1,7 @@
 import java.io.Serial;
 import java.io.Serializable;
 
-public class SingletonClassPerfect implements Serializable {
+public final class SingletonClassPerfect implements Serializable {
     private static volatile SingletonClassPerfect sSoleInstance;
 
     //private constructor.
