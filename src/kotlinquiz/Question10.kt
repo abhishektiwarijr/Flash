@@ -1,5 +1,7 @@
 package kotlinquiz
 
+import java.util.stream.Collectors
+
 //What does it print?
 
 val lazyValue: String by lazy {

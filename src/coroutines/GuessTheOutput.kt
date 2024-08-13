@@ -25,16 +25,16 @@ enum class GuessTheOutput : EnumInterface {
 }
 
 fun main() : Unit = runBlocking {
-    val job = launch {
-        println("Default: ${Thread.currentThread().name}")
-        delay(1000)
-        println("Will I be printed?")
-    }
-    job.join()
-    launch {
-        println("I am called")
-    }
-//    coroutineDilemma1()
+//    val job = launch {
+//        println("Default: ${Thread.currentThread().name}")
+//        delay(1000)
+//        println("Will I be printed?")
+//    }
+//    job.join()
+//    launch {
+//        println("I am called")
+//    }
+    coroutineDilemma1()
 //    coroutineDilemma2()
 }
 
